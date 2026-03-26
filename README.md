@@ -7,6 +7,7 @@
 Scenario option A
 
 Your team is developing mail provider (e.g. Google Mail), and you need to test mail deletion.
+
 2.1) Create test documentation with the necessary number of test cases to ensure that mail deletion works as expected. You can use your own experience for expected behavior.
 Use the test case format which you described in Step 1.
 
@@ -26,6 +27,7 @@ Recommended Technology: Use Java for programming, Selenium for web interaction, 
 Scenario option B
 
 Your team is developing an online store (e.g., the Periplus web version), and you need to test the shopping cart functionality.
+
 2.1) Create test documentation with the necessary number of test cases to ensure the shopping cart is working as expected. You can use your own experience with online stores for expected behavior.
 Use the test case format which you described in Step 1.
 
