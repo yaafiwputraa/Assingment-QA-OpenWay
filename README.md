@@ -1,44 +1,59 @@
-# Assingment-QA-OpenWay
+# Periplus Shopping Cart – QA Assignment
 
-1) Describe the components of a test case. Also provide an example of a well-constructed test case.
+QA Engineer internship assignment. Covers test documentation and test automation for the shopping cart feature of [Periplus](https://www.periplus.com).
 
-2) You need to complete only one of the following options. Each option includes both test documentation and test automation.
+## Structure
 
-Scenario option A
+```
+├── test-documentation/
+│   ├── Answer1_TestCaseComponents.md   # Q1: Test case components & example
+│   └── ShoppingCartTestCases.md        # Q2.1: 10 shopping cart test cases
+└── automation/                         # Q2.2: Automated test
+    ├── pom.xml
+    └── src/
+        ├── main/java/com/periplus/config/
+        │   └── ConfigReader.java
+        └── test/
+            ├── java/com/periplus/
+            │   ├── base/BaseTest.java
+            │   ├── pages/
+            │   │   ├── LoginPage.java
+            │   │   ├── HomePage.java
+            │   │   ├── SearchResultPage.java
+            │   │   ├── ProductDetailPage.java
+            │   │   └── CartPage.java
+            │   └── tests/ShoppingCartTest.java
+            └── resources/
+                ├── config.properties   # Fill in credentials here
+                └── testng.xml
+```
 
-Your team is developing mail provider (e.g. Google Mail), and you need to test mail deletion.
+## Tech Stack
 
-2.1) Create test documentation with the necessary number of test cases to ensure that mail deletion works as expected. You can use your own experience for expected behavior.
-Use the test case format which you described in Step 1.
+- **Language:** Java 11
+- **Test Framework:** TestNG 7.9
+- **Browser Automation:** Selenium 4.18
+- **Driver Management:** WebDriverManager 5.7 (auto-downloads ChromeDriver)
+- **Build Tool:** Maven
 
-2.2) Write an automated test, considering the step 2.1, that performs the following scenario:
+## How to Run
 
+1. Fill in your Periplus credentials in `automation/src/test/resources/config.properties`:
+   ```properties
+   email=your_email@example.com
+   password=your_password
+   ```
 
-Open Google Chrome in a new window
-Navigate to https://mail.google.com/mail/
-Enter a login and password
-Write the title of the last unread email in the mailbox to the log
-To implement this, first you need to register a Google account for testing and fill it with at least five unread emails.
-Pay attention, that Google can ask for additional verification (e.g. OTP code) and your test should work not only on your computer.
+2. Run the test:
+   ```bash
+   cd automation
+   mvn test
+   ```
 
-Recommended Technology: Use Java for programming, Selenium for web interaction, and TestNG for test organization.
+## Automated Test Scenario (TC-CART-001)
 
-
-Scenario option B
-
-Your team is developing an online store (e.g., the Periplus web version), and you need to test the shopping cart functionality.
-
-2.1) Create test documentation with the necessary number of test cases to ensure the shopping cart is working as expected. You can use your own experience with online stores for expected behavior.
-Use the test case format which you described in Step 1.
-
-2.2) Write an automated test, considering the step 2.1, that performs the following scenario:
-
-
-Open Google Chrome in a new window
-Navigate to https://www.periplus.com/
-Enter a login and password
-Find one product
-Add one product to the cart
-Verify that the product has been successfully added to the cart
-To implement this test, first register a test account in https://www.periplus.com/ using an email address.
-Recommended Technology: Use Java for programming, Selenium for web interaction, and TestNG for test organization.
+1. Open Periplus and log in
+2. Search for a product
+3. Open the first search result
+4. Add the product to the cart
+5. Navigate to cart and verify the product is present
