@@ -18,6 +18,8 @@
 | **Test Steps** | 1. Search for a product. 2. Open product detail page. 3. Click "Add to Cart". 4. Navigate to cart page. |
 | **Test Data** | Search keyword: "Harry Potter" |
 | **Expected Result** | Cart is not empty; the product name appears in the cart |
+| **Actual Result** | Cart is not empty; "Harry Potter: Hedwig Plush Journal" appears in the cart |
+| **Status** | Pass |
 
 ---
 

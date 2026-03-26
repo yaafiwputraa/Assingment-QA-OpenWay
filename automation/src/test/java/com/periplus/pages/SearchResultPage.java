@@ -17,7 +17,8 @@ public class SearchResultPage {
         this.wait   = wait;
     }
 
-    public void clickFirstProduct() {
+    /** click the first product in search results */
+    public void clickFirstProduct() { 
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".preloader")));
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstProductLink));
         org.openqa.selenium.WebElement el = driver.findElement(firstProductLink);

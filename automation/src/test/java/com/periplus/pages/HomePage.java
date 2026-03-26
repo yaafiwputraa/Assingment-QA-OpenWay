@@ -4,6 +4,7 @@ import com.periplus.config.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,9 +24,12 @@ public class HomePage {
     }
 
     public void searchFor(String keyword) {
-        String encoded = keyword.replace(" ", "+");
-        String searchUrl = ConfigReader.get("base.url") + "/product/Search?filter_name=" + encoded;
-        driver.get(searchUrl);
+        WebElement searchInput = wait.until(
+            ExpectedConditions.visibilityOfElementLocated(By.id("filter_name_desktop"))
+        );
+        searchInput.clear();
+        searchInput.sendKeys(keyword);
+        searchInput.sendKeys(Keys.ENTER);
         wait.until(ExpectedConditions.urlContains("Search"));
         System.out.println("Searched for: " + keyword);
     }
