@@ -30,6 +30,7 @@ public class ShoppingCartTest extends BaseTest {
 
         // Step 2: Search for a product
         HomePage homePage = new HomePage(driver, wait);
+        homePage.navigateTo();
         homePage.searchFor(keyword);
 
         // Step 3: Click the first product in search results

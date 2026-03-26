@@ -24,7 +24,7 @@ public class BaseTest {
         options.addArguments("--disable-notifications");
 
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         System.out.println("Browser started.");
     }

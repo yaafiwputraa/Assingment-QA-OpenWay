@@ -14,9 +14,9 @@ public class LoginPage {
     private static final String LOGIN_URL =
             ConfigReader.get("base.url") + "/index.php?route=account/login";
 
-    private final By emailField    = By.id("input-email");
-    private final By passwordField = By.id("input-password");
-    private final By loginButton   = By.cssSelector("input[value='Login']");
+    private final By emailField    = By.name("email");
+    private final By passwordField = By.id("ps");
+    private final By loginButton   = By.id("button-login");
 
     public LoginPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;

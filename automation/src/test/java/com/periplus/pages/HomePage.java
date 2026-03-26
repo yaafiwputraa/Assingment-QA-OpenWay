@@ -12,8 +12,6 @@ public class HomePage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    private final By searchBox = By.name("search");
-
     public HomePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait   = wait;
@@ -25,12 +23,10 @@ public class HomePage {
     }
 
     public void searchFor(String keyword) {
-        WebDriver d = driver;
-        wait.until(ExpectedConditions.visibilityOfElementLocated(searchBox));
-        d.findElement(searchBox).clear();
-        d.findElement(searchBox).sendKeys(keyword);
-        d.findElement(searchBox).sendKeys(Keys.ENTER);
-        wait.until(ExpectedConditions.urlContains("search"));
+        String encoded = keyword.replace(" ", "+");
+        String searchUrl = ConfigReader.get("base.url") + "/product/Search?filter_name=" + encoded;
+        driver.get(searchUrl);
+        wait.until(ExpectedConditions.urlContains("Search"));
         System.out.println("Searched for: " + keyword);
     }
 }

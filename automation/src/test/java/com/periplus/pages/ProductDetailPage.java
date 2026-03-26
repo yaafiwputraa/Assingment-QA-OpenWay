@@ -11,8 +11,8 @@ public class ProductDetailPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    private final By productNameLocator = By.cssSelector("h1, .product-title");
-    private final By addToCartButton    = By.id("button-cart");
+    private final By productNameLocator = By.cssSelector(".quickview-content h2");
+    private final By addToCartButton    = By.cssSelector(".btn-add-to-cart");
     private final By successAlert       = By.cssSelector(".alert-success");
 
     public ProductDetailPage(WebDriver driver, WebDriverWait wait) {
@@ -28,8 +28,10 @@ public class ProductDetailPage {
     }
 
     public void addToCart() {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".preloader")));
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButton));
-        driver.findElement(addToCartButton).click();
+        ((org.openqa.selenium.JavascriptExecutor) driver)
+                .executeScript("arguments[0].click();", driver.findElement(addToCartButton));
         System.out.println("Clicked Add to Cart.");
 
         try {

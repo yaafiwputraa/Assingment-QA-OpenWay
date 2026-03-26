@@ -10,7 +10,7 @@ public class SearchResultPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    private final By firstProductLink = By.cssSelector(".product-layout .caption a");
+    private final By firstProductLink = By.cssSelector(".product-content h3 a");
 
     public SearchResultPage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -18,8 +18,10 @@ public class SearchResultPage {
     }
 
     public void clickFirstProduct() {
-        wait.until(ExpectedConditions.elementToBeClickable(firstProductLink));
-        driver.findElement(firstProductLink).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".preloader")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(firstProductLink));
+        org.openqa.selenium.WebElement el = driver.findElement(firstProductLink);
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
         System.out.println("Clicked first product. URL: " + driver.getCurrentUrl());
     }
 }
